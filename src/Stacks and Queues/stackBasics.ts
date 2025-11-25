@@ -53,7 +53,7 @@ function adjDuplicates(str: string) {
   }
   return stack.join("");
 }
-console.log(adjDuplicates("aabbcc"));
+console.log(adjDuplicates("abcc"));
 
 //! Next Greater Element to its right
 
@@ -64,9 +64,9 @@ function nextGreater(arr: number[]) {
   for (let i = arr.length - 1; i >= 0; i--) {
     // when i = 4 , stack = [3] , res = [-1,-1,-1,-1,-1]
     // when i = 3 , stack = [4] *( 3 will be removed from stack inside while loop bcoz arr[3]= 4 which is more than stack[] = 3), res = [-1,-1,-1,-1,-1]
-    // when i = 2 , stack = [4 , 3] , res = [-1,-1,4,-1,-1]
-    // when i = 1 , stack = [4,3,2], res = [-1,2,4,-1,-1]
-    // when i = 0 , stack = [4,3,2,1] res = [4,2,2,-1,-1]
+    // when i = 2 , stack = [4,2] , res = [-1,-1,4,-1,-1]
+    // when i = 1 , stack = [4,2,1], res = [-1,2,4,-1,-1]
+    // when i = 0 , stack = [4,2] res = [4,2,4,-1,-1]
     while (stack.length > 0 && stack[stack.length - 1] <= arr[i]) {
       stack.pop();
     }
@@ -74,6 +74,7 @@ function nextGreater(arr: number[]) {
       res[i] = stack[stack.length - 1];
     }
     stack.push(arr[i]);
+    console.log("i : ", i, stack, res);
   }
   return res;
 }
